@@ -12,6 +12,7 @@ RUN find /data -type f -name '*.po' -exec sh -c 'file="{}"; msgfmt "${file%.*}.p
 
 # Build the themes
 FROM node:20-alpine AS themes
+RUN node -v
 WORKDIR /app
 COPY .babelrc .browserslistrc package.json webpack.config.js yarn.lock /app/
 RUN yarn --frozen-lockfile
